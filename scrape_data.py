@@ -310,7 +310,7 @@ def update_data(data):
     return pd.DataFrame(data)
 
 # Original date string
-dt_string = '20230525_2238'
+dt_string = '20230602_0121'
 
 # Construct the filename using f-string
 filename = f'ao3_lockwood_and_co_ao_{dt_string}.csv'
@@ -428,13 +428,13 @@ working_df['daysincefirtupload'] = (working_df['currentdate'] - working_df['firs
 working_df['author_activity'] = np.where(working_df['author_lastupdate_diff'] <= 60, 'active', 'inactive')
 
 # Compute the number of items in 'relationship' column and assign it to 'num_relationship' column
-working_df['num_relationship'] = working_df['relationship'].apply(len)
+working_df['num_relationship']=get_num_item(working_df['relationship'])
 
 # Compute the number of items in 'characters' column and assign it to 'num_characters' column
-working_df['num_characters'] = working_df['characters'].apply(len)
+working_df['num_characters']=get_num_item(working_df['characters'])
 
 # Compute the number of items in 'tags' column and assign it to 'num_tags' column
-working_df['num_tags'] = working_df['tags'].apply(len)
+working_df['num_tags']=get_num_item(working_df['tags'])
 
 # Selecting the desired columns in prev_df
 prev_df = prev_df[['link', 'words', 'hits', 'kudos', 'comments', 'bookmarks']]
