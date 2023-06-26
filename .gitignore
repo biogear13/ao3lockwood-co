@@ -1,2 +1,4 @@
 configfile.ini
 chromedriver
+/output/
+getdb.ipynb
